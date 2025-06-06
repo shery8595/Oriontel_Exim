@@ -67,10 +67,69 @@ nav {
     vertical-align: middle;
 }
 
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1001;
+    display: none;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display: block;
+    background: var(--light-text);
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle-label span::before {
+    top: -8px;
+}
+
+.nav-toggle-label span::after {
+    top: 8px;
+}
+
+/* Hamburger menu animation */
+.nav-toggle:checked + .nav-toggle-label span {
+    background: transparent;
+}
+
+.nav-toggle:checked + .nav-toggle-label span::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-toggle:checked + .nav-toggle-label span::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
 .nav-links {
     display: flex;
     list-style: none;
     gap: 2rem;
+    transition: transform 0.3s ease-in-out;
 }
 
 .nav-links a {
@@ -363,14 +422,33 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column;
-        text-align: center;
+        padding: 0 1rem;
+        position: relative;
+    }
+
+    .nav-toggle-label {
+        display: flex;
     }
 
     .nav-links {
-        margin-top: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--primary-color);
         flex-direction: column;
-        gap: 1rem;
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        transform: translateX(-100%);
+        gap: 0;
+    }
+
+    .nav-toggle:checked ~ .nav-links {
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
     }
 
     .hero-content h1 {
@@ -390,6 +468,14 @@ footer {
 
     .services-grid {
         grid-template-columns: 1fr;
+    }
+
+    section {
+        padding-top: 6rem;
+    }
+
+    #home.hero {
+        padding-top: 80px;
     }
 }
 
