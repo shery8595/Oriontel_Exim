@@ -24,8 +24,8 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
     color: var(--text-color);
     background-color: var(--background-color);
 }
@@ -34,6 +34,167 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+.icon {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    font-size: 1.2em;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+blockquote {
+    background: #f0f4ff;
+    border-left: 5px solid var(--primary-color);
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    max-width: 700px;
+}
+
+/* Values Section */
+.values {
+    background: var(--card-background);
+}
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.value-card {
+    background: #f8fafc;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.07);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: var(--transition);
+}
+.value-card:hover {
+    box-shadow: 0 6px 18px rgba(30, 64, 175, 0.13);
+    transform: translateY(-4px);
+}
+.value-card .icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+.value-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Markets Section */
+.markets {
+    background: var(--background-color);
+}
+.markets-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    list-style: none;
+    padding: 0;
+}
+.markets-list li {
+    background: var(--card-background);
+    color: var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 4px rgba(30, 64, 175, 0.07);
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+.markets-list li:hover {
+    background: var(--primary-color);
+    color: var(--light-text);
+}
+
+/* Navbar Modernization */
+.navbar {
+    background: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 2rem;
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.07);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+.logo img {
+    height: 48px;
+    border-radius: 8px;
+}
+.logo span {
+    color: var(--light-text);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+.nav-links a {
+    color: var(--light-text);
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+.nav-links a:hover {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+.hero {
+    min-height: 60vh;
+    background: linear-gradient(rgba(26, 35, 126, 0.93), rgba(13, 71, 161, 0.93)),
+                url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--light-text);
+    padding-top: 100px;
+}
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+}
+.hero-content .tagline {
+    font-size: 1.4rem;
+    margin-bottom: 2.2rem;
+    color: #e3eafc;
+}
+
+/* Section Headings */
+section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2.5rem;
+    font-size: 2.1rem;
 }
 
 /* Header & Navigation */
@@ -125,39 +286,7 @@ nav {
     transform: rotate(-45deg);
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    transition: transform 0.3s ease-in-out;
-}
-
-.nav-links a {
-    color: var(--light-text);
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.nav-links a:hover {
-    color: var(--accent-color);
-}
-
 /* Hero Section */
-.hero {
-    height: 100vh;
-    background: linear-gradient(rgba(26, 35, 126, 0.95), rgba(13, 71, 161, 0.95)),
-                url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--light-text);
-    padding-top: 80px;
-}
-
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
@@ -476,6 +605,31 @@ footer {
 
     #home.hero {
         padding-top: 80px;
+    }
+}
+
+@media (max-width: 900px) {
+    .values-grid, .services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .markets-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (max-width: 600px) {
+    .values-grid, .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .markets-list li {
+        width: 100%;
+        text-align: center;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    section {
+        padding: 2.5rem 0;
     }
 }
 
