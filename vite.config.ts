@@ -11,9 +11,8 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "attached_assets"),
     },
   },
-  root: path.resolve(__dirname, "client"), // entry folder where index.html lives
   build: {
-    outDir: path.resolve(__dirname, "dist"), // absolute path to dist outside client
+    outDir: "dist",
     emptyOutDir: true,
     rollupOptions: {
       output: {
@@ -21,8 +20,5 @@ export default defineConfig({
       },
     },
   },
-  server: {
-    port: 5173, // for local dev
-    open: true,
-  },
+  base: "./", // 👈 important for Vercel & relative asset paths
 });
