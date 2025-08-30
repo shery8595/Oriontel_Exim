@@ -21,10 +21,15 @@
       width: 90%;
       max-width: 1200px;
       margin: auto;
+      padding: 2rem 0;
     }
 
     h1, h2, h3, h4 {
       margin: 0 0 1rem;
+    }
+
+    section {
+      padding: 3rem 0;
     }
 
     /* Navbar */
@@ -35,6 +40,9 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .navbar .logo {
@@ -46,16 +54,17 @@
       font-weight: 700;
       color: #F5A623;
       margin-left: 0.5rem;
+      font-size: 1.5rem;
     }
 
     .navbar .nav-links {
       list-style: none;
       margin: 0;
       padding: 0;
+      display: flex;
     }
 
     .navbar .nav-links li {
-      display: inline-block;
       margin-left: 1.5rem;
     }
 
@@ -63,6 +72,7 @@
       color: #fff;
       text-decoration: none;
       font-weight: 500;
+      transition: color 0.3s;
     }
 
     .navbar .nav-links a:hover {
@@ -85,25 +95,44 @@
     .tagline {
       font-size: 1.2rem;
       color: #F5A623;
+      margin-bottom: 2rem;
+    }
+
+    .hero-button {
+      background: #F5A623;
+      color: #0A2F5A;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .hero-button:hover {
+      background: #e59410;
     }
 
     /* Section Titles */
     section h2 {
       color: #0A2F5A;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
       font-size: 2rem;
       border-left: 5px solid #F5A623;
       padding-left: 0.5rem;
     }
 
     /* Grids */
-    .services-grid, .values-grid {
+    .services-grid, .values-grid, .industries-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
+      margin-top: 2rem;
     }
 
-    .service-card, .value-card {
+    .service-card, .value-card, .industry-card {
       background: #fff;
       border: 1px solid #e5e7eb;
       border-radius: 10px;
@@ -111,9 +140,16 @@
       transition: 0.3s ease;
     }
 
-    .service-card:hover, .value-card:hover {
+    .service-card:hover, .value-card:hover, .industry-card:hover {
       box-shadow: 0 5px 20px rgba(0,0,0,0.1);
       transform: translateY(-5px);
+    }
+
+    .service-card h3, .value-card h3, .industry-card h3 {
+      color: #0A2F5A;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     /* Mission List */
@@ -124,12 +160,33 @@
 
     .mission-list li {
       margin-bottom: 0.8rem;
+      padding-left: 1.5rem;
+      position: relative;
     }
 
-    /* Markets */
-    .markets-list {
-      list-style: disc;
-      padding-left: 1.5rem;
+    .mission-list li:before {
+      content: "•";
+      color: #F5A623;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Industries */
+    .industries-list {
+      columns: 2;
+      column-gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .industries-list {
+        columns: 1;
+      }
+    }
+
+    .industries-list li {
+      margin-bottom: 0.5rem;
+      break-inside: avoid;
     }
 
     /* Leadership */
@@ -141,6 +198,19 @@
       border: 1px solid #e5e7eb;
       border-radius: 10px;
       padding: 2rem;
+    }
+
+    .leader-image {
+      flex-shrink: 0;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: #0A2F5A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
     }
 
     .leader-info h3 {
@@ -180,6 +250,7 @@
       padding: 0.8rem;
       border: 1px solid #ccc;
       border-radius: 6px;
+      font-family: inherit;
     }
 
     .submit-button {
@@ -201,7 +272,7 @@
     footer {
       background: #0D1B2A;
       color: #E5E5E5;
-      padding: 3rem 2rem;
+      padding: 3rem 0 1rem;
     }
 
     .footer-content {
@@ -232,6 +303,62 @@
       padding-top: 1rem;
       font-size: 0.9rem;
     }
+
+    /* Business Operations */
+    .operations-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .operations-column {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .operations-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .operations-list li {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .operations-list li:before {
+      content: "→";
+      color: #F5A623;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      .navbar .nav-links {
+        margin-top: 1rem;
+      }
+      
+      .navbar .nav-links li {
+        margin: 0 0.5rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .leader-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -239,7 +366,6 @@
   <header>
     <nav class="navbar">
       <div class="logo">
-        <img src="logo/logo.jpg" alt="ORIONTEL EXIM Logo" style="height:40px;">
         <span>ORIONTEL EXIM</span>
       </div>
       <ul class="nav-links">
@@ -247,8 +373,8 @@
         <li><a href="#vision">Vision</a></li>
         <li><a href="#mission">Mission</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#values">Core Values</a></li>
-        <li><a href="#markets">Markets</a></li>
+        <li><a href="#operations">Operations</a></li>
+        <li><a href="#industries">Industries</a></li>
         <li><a href="#leadership">Founder</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -257,161 +383,183 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <div class="hero-content">
-      <h1><span class="icon"><i class="fas fa-globe"></i></span> ORIONTEL EXIM</h1>
-      <p class="tagline">Global Trade Excellence — Local Trust Assurance</p>
+    <div class="container">
+      <h1><i class="fas fa-globe-americas"></i> ORIONTEL EXIM (SMC-Private) Limited</h1>
+      <p class="tagline">Your Trusted Partner in Local and Global Trade</p>
+      <p>General trading and import-export company registered with SECP under the Companies Act, 2017</p>
+      <a href="#contact" class="hero-button">Get in Touch</a>
     </div>
   </section>
 
   <!-- ===== ABOUT ===== -->
   <section id="about" class="about">
     <div class="container">
-      <h2><span class="icon"><i class="fas fa-building"></i></span> ABOUT US</h2>
-      <p>ORIONTEL EXIM (SMC-Private) Limited is your trusted partner in modern trade solutions, seamlessly connecting Pakistani businesses with international markets. Registered with the Securities and Exchange Commission of Pakistan (SECP) since June 12, 2025, we specialize in end-to-end import, export, and domestic trade services.</p>
-      <p>Driven by legal compliance, operational integrity, and global best practices, we deliver efficient and transparent trade solutions across borders and within Pakistan.</p>
+      <h2><i class="fas fa-building"></i> ABOUT US</h2>
+      <p>ORIONTEL EXIM is a general trading and import-export company registered with SECP under the Companies Act, 2017. Established in June 2025, we are authorized to import and export all kinds of goods, raw materials, and finished products, making us a trusted partner in local and global trade.</p>
+      <p>We specialize in trade representation, commercial services, and value-added trading across multiple industries.</p>
     </div>
   </section>
 
   <!-- ===== VISION ===== -->
-  <section id="vision" class="vision">
+  <section id="vision" class="vision" style="background-color: #eef2f7;">
     <div class="container">
-      <h2><span class="icon"><i class="fas fa-star"></i></span> OUR VISION</h2>
-      <blockquote>To become the world’s most trusted trade gateway — powered by technology, compliance, and unmatched operational excellence.</blockquote>
+      <h2><i class="fas fa-eye"></i> OUR VISION</h2>
+      <blockquote style="font-style: italic; font-size: 1.2rem; border-left: 3px solid #F5A623; padding-left: 1rem;">
+        To be a global trading hub that connects markets and creates sustainable growth.
+      </blockquote>
     </div>
   </section>
 
   <!-- ===== MISSION ===== -->
   <section id="mission" class="mission">
     <div class="container">
-      <h2><span class="icon"><i class="fas fa-bullseye"></i></span> OUR MISSION</h2>
-      <ul class="mission-list">
-        <li><i class="fas fa-check-circle" style="color:#F5A623;"></i> Simplify global trade through seamless, regulation-compliant import/export and domestic solutions.</li>
-        <li><i class="fas fa-check-circle" style="color:#F5A623;"></i> Forge lasting partnerships through transparency, reliability, and performance.</li>
-        <li><i class="fas fa-check-circle" style="color:#F5A623;"></i> Empower Pakistani businesses to compete and thrive in international markets.</li>
-        <li><i class="fas fa-check-circle" style="color:#F5A623;"></i> Lead innovation in digital trade infrastructure and sustainable practices.</li>
-      </ul>
+      <h2><i class="fas fa-bullseye"></i> OUR MISSION</h2>
+      <p>Deliver efficient, compliant, and innovative trading solutions built on trust, integrity, and long-term partnerships.</p>
     </div>
   </section>
 
   <!-- ===== SERVICES ===== -->
-  <section id="services" class="services">
+  <section id="services" class="services" style="background-color: #eef2f7;">
     <div class="container">
-      <h2><span class="icon"><i class="fas fa-briefcase"></i></span> OUR SERVICES</h2>
+      <h2><i class="fas fa-handshake"></i> WHAT WE DO</h2>
       <div class="services-grid">
         <div class="service-card">
-          <span class="icon"><i class="fas fa-box"></i></span>
-          <h3>Authorized Commodity Trade</h3>
-          <ul>
-            <li>Licensed import/export of all SECP-permissible goods</li>
-            <li>Legally compliant domestic trading across Pakistan</li>
-          </ul>
+          <h3><i class="fas fa-truck"></i> General Trading & Distribution</h3>
+          <p>Buy, sell, and distribute lawful goods across Pakistan through wholesale, retail, and online channels.</p>
         </div>
         <div class="service-card">
-          <span class="icon"><i class="fas fa-sync-alt"></i></span>
-          <h3>Tailored End-to-End Solutions</h3>
-          <ul>
-            <li>Sourcing, procurement, logistics, and last-mile delivery</li>
-            <li>Full documentation, shipping, and customs support</li>
-          </ul>
+          <h3><i class="fas fa-users"></i> Trade & Commercial Representation</h3>
+          <p>Represent local and international brands as their trusted partner, promoting products and expanding market reach.</p>
         </div>
         <div class="service-card">
-          <span class="icon"><i class="fas fa-network-wired"></i></span>
-          <h3>Digital Trade Hub</h3>
-          <ul>
-            <li>Real-time shipment tracking and trade analytics</li>
-            <li>Automated documentation and digital tools</li>
-          </ul>
+          <h3><i class="fas fa-boxes"></i> Procurement & Supply Solutions</h3>
+          <p>Offer sourcing, procurement, and logistics services to support manufacturers, importers and clients.</p>
         </div>
         <div class="service-card">
-          <span class="icon"><i class="fas fa-brain"></i></span>
-          <h3>Advisory & Compliance</h3>
-          <ul>
-            <li>Expert guidance on customs, licensing & audits</li>
-            <li>Strategic trade consulting (domestic & international)</li>
+          <h3><i class="fas fa-shopping-cart"></i> E-Commerce & Digital Trade</h3>
+          <p>Develop and manage online stores, market places and digital trade channels to reach wider audiences.</p>
+        </div>
+        <div class="service-card">
+          <h3><i class="fas fa-star"></i> Value-Added Trading Services</h3>
+          <p>We import quality products, refine and rebrand them for stronger market appeal, and provide reliable local delivery with full after-sales care, warranty and certified dealership support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BUSINESS OPERATIONS ===== -->
+  <section id="operations" class="operations">
+    <div class="container">
+      <h2><i class="fas fa-globe"></i> BUSINESS OPERATIONS</h2>
+      <div class="operations-container">
+        <div class="operations-column">
+          <h3 style="color: #0A2F5A;">Local Business Operations</h3>
+          <ul class="operations-list">
+            <li><strong>General Trading & Distribution:</strong> Buy, sell, and distribute lawful goods across Pakistan through wholesale, retail, and online channels.</li>
+            <li><strong>Trade & Commercial Representation:</strong> Represent local and international brands as their trusted partner.</li>
+            <li><strong>Procurement & Supply Solutions:</strong> Offer sourcing, procurement, and logistics services.</li>
+            <li><strong>E-Commerce & Digital Trade:</strong> Develop and manage online stores and digital trade channels.</li>
+            <li><strong>Value-Added Trading Services:</strong> Import, refine, and rebrand products with after-sales support.</li>
+          </ul>
+        </div>
+        <div class="operations-column">
+          <h3 style="color: #0A2F5A;">International Business Operations</h3>
+          <ul class="operations-list">
+            <li><strong>Global Import & Export:</strong> Trade in commodities, raw materials, machinery, consumer products and food items.</li>
+            <li><strong>International Brand Representation:</strong> Act as a trusted partner for foreign companies in Pakistan.</li>
+            <li><strong>Cross-Border Partnerships:</strong> Facilitate joint ventures with businesses in Europe, Middle East, Australia, Africa and Asia.</li>
+            <li><strong>Digital Trade & E-Commerce Solutions:</strong> Support international e-commerce and cross-border online trade.</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== VALUES ===== -->
-  <section id="values" class="values">
+  <!-- ===== INDUSTRIES ===== -->
+  <section id="industries" class="industries" style="background-color: #eef2f7;">
     <div class="container">
-      <h2><span class="icon"><i class="fas fa-key"></i></span> CORE VALUES</h2>
-      <div class="values-grid">
-        <div class="value-card">
-          <span class="icon"><i class="fas fa-shield-alt"></i></span>
-          <h4>Integrity</h4>
-          <p>Ethical operations and uncompromising compliance</p>
+      <h2><i class="fas fa-industry"></i> INDUSTRIES & PRODUCTS WE TRADE</h2>
+      <p>At ORIONTEL EXIM, our broad trading license allows us to operate across multiple industries. We import, export and distribute a wide range of products globally and locally.</p>
+      
+      <div class="industries-grid">
+        <div class="industry-card">
+          <h3><i class="fas fa-leaf"></i> Agriculture & Food</h3>
+          <p>Grains, pulses, fruits, vegetables, spices, oils, meat, poultry, seafood, and processed foods.</p>
         </div>
-        <div class="value-card">
-          <span class="icon"><i class="fas fa-cogs"></i></span>
-          <h4>Innovation</h4>
-          <p>Tech-driven solutions for future-ready trade</p>
+        <div class="industry-card">
+          <h3><i class="fas fa-hard-hat"></i> Construction & Materials</h3>
+          <p>Cement, steel, tiles, sanitary ware, glass, wood, paints, adhesives, and fittings.</p>
         </div>
-        <div class="value-card">
-          <span class="icon"><i class="fas fa-award"></i></span>
-          <h4>Excellence</h4>
-          <p>Global standards in every transaction</p>
+        <div class="industry-card">
+          <h3><i class="fas fa-tshirt"></i> Textiles & Apparel</h3>
+          <p>Yarns, fabrics, garments, uniforms, home textiles, leather, and footwear.</p>
         </div>
-        <div class="value-card">
-          <span class="icon"><i class="fas fa-handshake"></i></span>
-          <h4>Trust</h4>
-          <p>Transparent partnerships and reliable service</p>
+        <div class="industry-card">
+          <h3><i class="fas fa-flask"></i> Chemicals & Packaging</h3>
+          <p>Industrial chemicals, dyes, detergents, fertilizers, pesticides, adhesives, and packaging materials.</p>
+        </div>
+        <div class="industry-card">
+          <h3><i class="fas fa-bolt"></i> Electronics & Energy</h3>
+          <p>Consumer electronics, mobiles, appliances, solar panels, UPS, transformers and spare parts.</p>
+        </div>
+        <div class="industry-card">
+          <h3><i class="fas fa-oil-well"></i> Petroleum & Industrial Equipment</h3>
+          <p>Lubricants, renewable energy systems, generators, turbines, boilers and high-performance construction machinery.</p>
+        </div>
+        <div class="industry-card">
+          <h3><i class="fas fa-heartbeat"></i> Healthcare & Pharmaceuticals</h3>
+          <p>Medical devices, surgical instruments, nutraceuticals, hospital essentials, and pharmaceutical raw materials.</p>
+        </div>
+        <div class="industry-card">
+          <h3><i class="fas fa-car"></i> Automotive & Transport</h3>
+          <p>Automobiles, trucks, motorcycles, tyres, batteries, spare parts, and heavy machinery.</p>
+        </div>
+        <div class="industry-card">
+          <h3><i class="fas fa-laptop"></i> IT & Telecom</h3>
+          <p>Hardware, software, networking, telecom equipment, and IT trade solutions.</p>
+        </div>
+        <div class="industry-card">
+          <h3><i class="fas fa-home"></i> Consumer Goods</h3>
+          <p>Furniture, household products, kitchenware, cosmetics, toys, stationery, sports goods, and personal care.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== MARKETS ===== -->
-  <section id="markets" class="markets">
-    <div class="container">
-      <h2><span class="icon"><i class="fas fa-globe-asia"></i></span> OUR TARGET MARKETS</h2>
-      <ul class="markets-list">
-        <li>Middle East</li>
-        <li>Europe</li>
-        <li>North America</li>
-        <li>South Asia</li>
-        <li>Africa</li>
-        <li>Australia</li>
-        <li>Nationwide across Pakistan</li>
-      </ul>
     </div>
   </section>
 
   <!-- ===== LEADERSHIP ===== -->
   <section id="leadership" class="leadership">
     <div class="container">
-      <h2><span class="icon"><i class="fas fa-user-tie"></i></span> MEET OUR FOUNDER</h2>
+      <h2><i class="fas fa-user-tie"></i> MEET OUR FOUNDER</h2>
       <div class="leader-card">
         <div class="leader-image">
-          <span class="icon"><i class="fas fa-user-tie" style="font-size:50px; color:#0A2F5A;"></i></span>
+          <i class="fas fa-user" style="font-size: 3rem;"></i>
         </div>
         <div class="leader-info">
           <h3>Asif Rehman</h3>
           <p class="position">Founder & CEO / Director</p>
-          <p>A visionary entrepreneur and international trade strategist, Mr. Rehman leads ORIONTEL EXIM with a passion for regulatory excellence, technological innovation, and client-centric performance. His leadership ensures measurable results for partners in both local and global markets.</p>
+          <p>A visionary entrepreneur and international trade strategist with expertise in regulatory compliance, technology-driven solutions, and client-focused growth. His leadership ensures measurable results and sustainable partnerships worldwide.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== CONTACT ===== -->
-  <section id="contact" class="contact">
+  <section id="contact" class="contact" style="background-color: #eef2f7;">
     <div class="container">
-      <h2><span class="icon"><i class="fas fa-phone"></i></span> CONTACT US</h2>
+      <h2><i class="fas fa-phone"></i> CONTACT US</h2>
       <div class="contact-content">
         <div class="contact-info">
-          <p><span class="icon"><i class="fas fa-map-marker-alt"></i></span> <strong>Office Address:</strong><br>Empire Plaza, II-B-II-2R-34/RH/SH<br>Machine Mohallah No.3, Jhelum, Punjab, Pakistan</p>
-          <p><span class="icon"><i class="fas fa-envelope"></i></span> <strong>Email:</strong> oriontelexim@gmail.com</p>
-          <p><span class="icon"><i class="fas fa-phone"></i></span> <strong>Phone:</strong> +92 300 2711881 | +92 333 2711881</p>
-          <p><span class="icon"><i class="fas fa-globe"></i></span> <strong>Website:</strong> www.oriontelexim.com</p>
-          <p><span class="icon"><i class="fas fa-mail-bulk"></i></span> <strong>Postal Code:</strong> 49600</p>
+          <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Empire Plaza, Machine Mohallah No.3, Jhelum, Punjab, Pakistan</p>
+          <p><i class="fas fa-envelope"></i> <strong>Email:</strong> oriontelexim@gmail.com</p>
+          <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +92 300 2711881 / +92 333 2711881</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> www.oriontelexim.com</p>
+          <p><i class="fas fa-quote-right"></i> <em>Let's build global opportunities together.</em></p>
         </div>
         <form class="contact-form">
           <input type="text" placeholder="Your Name" required>
           <input type="email" placeholder="Your Email" required>
-          <textarea placeholder="Your Message" required></textarea>
+          <input type="tel" placeholder="Your Phone">
+          <textarea placeholder="Your Message" rows="5" required></textarea>
           <button type="submit" class="submit-button">Send Message</button>
         </form>
       </div>
@@ -435,15 +583,15 @@
             <li><a href="#vision">Vision</a></li>
             <li><a href="#mission">Mission</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#values">Core Values</a></li>
-            <li><a href="#markets">Markets</a></li>
+            <li><a href="#operations">Operations</a></li>
+            <li><a href="#industries">Industries</a></li>
             <li><a href="#leadership">Founder</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 ORIONTEL EXIM. All rights reserved.</p>
+        <p>&copy; 2025 ORIONTEL EXIM. All rights reserved.</p>
       </div>
     </div>
   </footer>
