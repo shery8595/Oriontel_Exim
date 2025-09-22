@@ -5,470 +5,1004 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ORIONTEL EXIM - Global Trade Excellence</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* Reset + Base */
-    body {
-      font-family: 'Inter', sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background-color: #F8FAFC;
-      color: #1A1A1A;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #0A2F5A;
+      --secondary-color: #F5A623;
+      --accent-color: #1E40AF;
+      --dark-bg: #0D1B2A;
+      --light-bg: #F8FAFC;
+      --white: #FFFFFF;
+      --gray-100: #F1F5F9;
+      --gray-200: #E2E8F0;
+      --gray-600: #475569;
+      --gray-800: #1E293B;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+      --gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, #FF8C00 100%);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
+      color: var(--gray-800);
+      background: var(--light-bg);
+      overflow-x: hidden;
     }
 
     .container {
       width: 90%;
       max-width: 1200px;
-      margin: auto;
-      padding: 2rem 0;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
-    h1, h2, h3, h4 {
-      margin: 0 0 1rem;
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
     }
 
-    section {
-      padding: 3rem 0;
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Navbar */
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Enhanced Navbar */
     .navbar {
-      background: #0A2F5A;
-      color: #fff;
+      background: rgba(10, 47, 90, 0.95);
+      backdrop-filter: blur(10px);
+      color: var(--white);
+      padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar.scrolled {
+      background: rgba(10, 47, 90, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
 
     .navbar .logo {
       display: flex;
       align-items: center;
-    }
-
-    .navbar .logo span {
-      font-weight: 700;
-      color: #F5A623;
-      margin-left: 0.5rem;
       font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--secondary-color);
+      text-decoration: none;
     }
 
-    .navbar .nav-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .navbar .logo i {
+      margin-right: 0.5rem;
+      font-size: 1.8rem;
+      animation: pulse 2s infinite;
+    }
+
+    .nav-links {
       display: flex;
+      list-style: none;
+      gap: 2rem;
     }
 
-    .navbar .nav-links li {
-      margin-left: 1.5rem;
-    }
-
-    .navbar .nav-links a {
-      color: #fff;
+    .nav-links a {
+      color: var(--white);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .navbar .nav-links a:hover {
-      color: #F5A623;
-    }
-
-    /* Hero */
-    .hero {
-      background: linear-gradient(to right, #0A2F5A, #0D1B2A);
-      color: #fff;
-      text-align: center;
-      padding: 5rem 2rem;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .tagline {
-      font-size: 1.2rem;
-      color: #F5A623;
-      margin-bottom: 2rem;
-    }
-
-    .hero-button {
-      background: #F5A623;
-      color: #0A2F5A;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .hero-button:hover {
-      background: #e59410;
-    }
-
-    /* Section Titles */
-    section h2 {
-      color: #0A2F5A;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-      border-left: 5px solid #F5A623;
-      padding-left: 0.5rem;
-    }
-
-    /* Grids */
-    .services-grid, .values-grid, .industries-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .service-card, .value-card, .industry-card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 1.5rem;
-      transition: 0.3s ease;
-    }
-
-    .service-card:hover, .value-card:hover, .industry-card:hover {
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-      transform: translateY(-5px);
-    }
-
-    .service-card h3, .value-card h3, .industry-card h3 {
-      color: #0A2F5A;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    /* Mission List */
-    .mission-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .mission-list li {
-      margin-bottom: 0.8rem;
-      padding-left: 1.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
       position: relative;
     }
 
-    .mission-list li:before {
-      content: "•";
-      color: #F5A623;
-      font-weight: bold;
+    .nav-links a::before {
+      content: '';
       position: absolute;
-      left: 0;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--secondary-color);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
     }
 
-    /* Industries */
-    .industries-list {
-      columns: 2;
-      column-gap: 2rem;
+    .nav-links a:hover::before {
+      width: 80%;
     }
 
-    @media (max-width: 768px) {
-      .industries-list {
-        columns: 1;
-      }
+    .nav-links a:hover {
+      color: var(--secondary-color);
+      background: rgba(245, 166, 35, 0.1);
     }
 
-    .industries-list li {
-      margin-bottom: 0.5rem;
-      break-inside: avoid;
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
     }
 
-    /* Leadership */
-    .leader-card {
+    .mobile-menu span {
+      width: 25px;
+      height: 3px;
+      background: var(--white);
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    /* Enhanced Hero */
+    .hero {
+      background: var(--gradient-primary);
+      color: var(--white);
+      padding: 8rem 0 6rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      gap: 2rem;
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 2rem;
     }
 
-    .leader-image {
-      flex-shrink: 0;
-      width: 150px;
-      height: 150px;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--white) 0%, var(--secondary-color) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .tagline {
+      font-size: 1.4rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .hero .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient-secondary);
+      color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .floating-element {
+      position: absolute;
+      background: rgba(245, 166, 35, 0.1);
       border-radius: 50%;
-      background: #0A2F5A;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-element:nth-child(1) {
+      width: 60px;
+      height: 60px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-element:nth-child(2) {
+      width: 80px;
+      height: 80px;
+      top: 60%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+
+    .floating-element:nth-child(3) {
+      width: 40px;
+      height: 40px;
+      bottom: 30%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    /* Enhanced Sections */
+    section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    section:nth-child(even) {
+      background: var(--white);
+    }
+
+    section:nth-child(odd) {
+      background: var(--gray-100);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--gradient-secondary);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Enhanced Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient-secondary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-primary);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 3rem;
+      color: var(--white);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
-    .leader-info h3 {
-      margin: 0;
-      color: #0A2F5A;
-    }
-
-    .position {
-      color: #555;
+    .card h3 {
+      font-size: 1.25rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
     }
 
-    /* Contact */
-    .contact-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
+    .card p {
+      color: var(--gray-600);
+      line-height: 1.6;
     }
 
-    .contact-info {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .contact-form {
-      flex: 1;
-      min-width: 300px;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: inherit;
-    }
-
-    .submit-button {
-      background: #0A2F5A;
-      color: #fff;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    .submit-button:hover {
-      background: #07305A;
-    }
-
-    /* Footer */
-    footer {
-      background: #0D1B2A;
-      color: #E5E5E5;
-      padding: 3rem 0 1rem;
-    }
-
-    .footer-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-
-    .footer-links ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-links a {
-      color: #E5E5E5;
-      text-decoration: none;
-    }
-
-    .footer-links a:hover {
-      color: #F5A623;
-    }
-
-    .footer-bottom {
-      margin-top: 1.5rem;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 1rem;
-      font-size: 0.9rem;
-    }
-
-    /* Business Operations */
-    .operations-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
+    /* Enhanced Operations */
+    .operations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
     }
 
     .operations-column {
-      flex: 1;
-      min-width: 300px;
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+    }
+
+    .operations-column h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
 
     .operations-list {
       list-style: none;
-      padding: 0;
     }
 
     .operations-list li {
       margin-bottom: 1.5rem;
-      padding-left: 1.5rem;
+      padding-left: 2rem;
+      position: relative;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    .operations-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--secondary-color);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .operations-list strong {
+      color: var(--primary-color);
+    }
+
+    /* Enhanced Industries Grid */
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .industry-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .industry-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .industry-card .card-icon {
+      margin: 0 auto 1.5rem;
+      background: var(--gradient-secondary);
+    }
+
+    /* Enhanced Leadership */
+    .leader-card {
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid var(--gray-200);
+    }
+
+    .leader-image {
+      flex-shrink: 0;
+      width: 180px;
+      height: 180px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 4rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .leader-info h3 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .leader-position {
+      color: var(--secondary-color);
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Enhanced Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: var(--gray-100);
+      border-radius: 12px;
+    }
+
+    .contact-item i {
+      color: var(--secondary-color);
+      font-size: 1.25rem;
+      width: 24px;
+      text-align: center;
+    }
+
+    .contact-form {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-form h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+    }
+
+    /* Enhanced Footer */
+    footer {
+      background: var(--dark-bg);
+      color: var(--white);
+      padding: 4rem 0 2rem;
       position: relative;
     }
 
-    .operations-list li:before {
-      content: "→";
-      color: #F5A623;
-      font-weight: bold;
-      position: absolute;
-      left: 0;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
     }
 
-    /* Responsive */
+    .footer-brand h3 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      opacity: 0.8;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--secondary-color);
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--secondary-color);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      opacity: 0.7;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .operations-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
-      .navbar {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu {
+        display: flex;
+      }
+      
+      .hero {
+        padding: 6rem 0 4rem;
+      }
+      
+      .hero-buttons {
         flex-direction: column;
-        padding: 1rem;
+        align-items: center;
       }
       
-      .navbar .nav-links {
-        margin-top: 1rem;
+      .cards-grid {
+        grid-template-columns: 1fr;
       }
       
-      .navbar .nav-links li {
-        margin: 0 0.5rem;
-      }
-      
-      .hero h1 {
-        font-size: 2rem;
+      .industries-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       }
       
       .leader-card {
         flex-direction: column;
         text-align: center;
+        gap: 2rem;
+        padding: 2rem;
       }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding: 4rem 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .operations-column {
+        padding: 1.5rem;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .contact-info,
+      .contact-form {
+        padding: 1.5rem;
+      }
+      
+      .hero {
+        padding: 5rem 0 3rem;
+      }
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-secondary);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .scroll-top:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
-  <!-- ===== HEADER ===== -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">
-        <span>ORIONTEL EXIM</span>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="nav-container">
+        <a href="#" class="logo">
+          <i class="fas fa-globe-americas"></i>
+          ORIONTEL EXIM
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#vision">Vision</a></li>
+          <li><a href="#mission">Mission</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#operations">Operations</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#leadership">Leadership</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#vision">Vision</a></li>
-        <li><a href="#mission">Mission</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#operations">Operations</a></li>
-        <li><a href="#industries">Industries</a></li>
-        <li><a href="#leadership">Founder</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
     <div class="container">
-      <h1><i class="fas fa-globe-americas"></i> ORIONTEL EXIM (SMC-Private) Limited</h1>
-      <p class="tagline">Your Trusted Partner in Local and Global Trade</p>
-      <p>General trading and import-export company registered with SECP under the Companies Act, 2017</p>
-      <a href="#contact" class="hero-button">Get in Touch</a>
+      <div class="hero-content">
+        <h1>ORIONTEL EXIM</h1>
+        <p class="tagline">Your Trusted Partner in Local and Global Trade</p>
+        <p class="subtitle">
+          General trading and import-export company registered with SECP under the Companies Act, 2017.
+          Connecting markets worldwide with integrity, innovation, and excellence.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">
+            <i class="fas fa-handshake"></i>
+            Get Started
+          </a>
+          <a href="#about" class="btn btn-outline">
+            <i class="fas fa-arrow-right"></i>
+            Learn More
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ===== ABOUT ===== -->
   <section id="about" class="about">
     <div class="container">
-      <h2><i class="fas fa-building"></i> ABOUT US</h2>
-      <p>ORIONTEL EXIM is a general trading and import-export company registered with SECP under the Companies Act, 2017. Established in June 2025, we are authorized to import and export all kinds of goods, raw materials, and finished products, making us a trusted partner in local and global trade.</p>
-      <p>We specialize in trade representation, commercial services, and value-added trading across multiple industries.</p>
-    </div>
-  </section>
-
-  <!-- ===== VISION ===== -->
-  <section id="vision" class="vision" style="background-color: #eef2f7;">
-    <div class="container">
-      <h2><i class="fas fa-eye"></i> OUR VISION</h2>
-      <blockquote style="font-style: italic; font-size: 1.2rem; border-left: 3px solid #F5A623; padding-left: 1rem;">
-        To be a global trading hub that connects markets and creates sustainable growth.
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- ===== MISSION ===== -->
-  <section id="mission" class="mission">
-    <div class="container">
-      <h2><i class="fas fa-bullseye"></i> OUR MISSION</h2>
-      <p>Deliver efficient, compliant, and innovative trading solutions built on trust, integrity, and long-term partnerships.</p>
-    </div>
-  </section>
-
-  <!-- ===== SERVICES ===== -->
-  <section id="services" class="services" style="background-color: #eef2f7;">
-    <div class="container">
-      <h2><i class="fas fa-handshake"></i> WHAT WE DO</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <h3><i class="fas fa-truck"></i> General Trading & Distribution</h3>
-          <p>Buy, sell, and distribute lawful goods across Pakistan through wholesale, retail, and online channels.</p>
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">About ORIONTEL EXIM</h2>
+        <p class="section-subtitle">
+          Established in June 2025, we are a dynamic trading company specializing in import-export operations 
+          across multiple industries, delivering value-driven solutions with global reach.
+        </p>
+      </div>
+      <div class="cards-grid">
+        <div class="card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>SECP Registered</h3>
+          <p>Officially registered with the Securities and Exchange Commission of Pakistan under the Companies Act, 2017, ensuring full legal compliance and transparency.</p>
         </div>
-        <div class="service-card">
-          <h3><i class="fas fa-users"></i> Trade & Commercial Representation</h3>
-          <p>Represent local and international brands as their trusted partner, promoting products and expanding market reach.</p>
+        <div class="card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-globe-asia"></i>
+          </div>
+          <h3>Global Reach</h3>
+          <p>Authorized to import and export all kinds of goods, raw materials, and finished products across international markets with extensive network coverage.</p>
         </div>
-        <div class="service-card">
-          <h3><i class="fas fa-boxes"></i> Procurement & Supply Solutions</h3>
-          <p>Offer sourcing, procurement, and logistics services to support manufacturers, importers and clients.</p>
-        </div>
-        <div class="service-card">
-          <h3><i class="fas fa-shopping-cart"></i> E-Commerce & Digital Trade</h3>
-          <p>Develop and manage online stores, market places and digital trade channels to reach wider audiences.</p>
-        </div>
-        <div class="service-card">
-          <h3><i class="fas fa-star"></i> Value-Added Trading Services</h3>
-          <p>We import quality products, refine and rebrand them for stronger market appeal, and provide reliable local delivery with full after-sales care, warranty and certified dealership support.</p>
+        <div class="card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>Trusted Partnership</h3>
+          <p>Specializing in trade representation, commercial services, and value-added trading solutions that foster long-term business relationships.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== BUSINESS OPERATIONS ===== -->
+  <!-- ===== VISION & MISSION ===== -->
+  <section id="vision" class="vision-mission">
+    <div class="container">
+      <div class="cards-grid">
+        <div class="card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3>Our Vision</h3>
+          <p>To be a leading global trading hub that connects markets, drives innovation, and fosters long-term prosperity for all stakeholders worldwide.</p>
+        </div>
+        <div class="card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3>Our Mission</h3>
+          <p>Deliver efficient, reliable, and compliant trading solutions built on trust, integrity, and lasting partnerships that drive sustainable growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">What We Do</h2>
+        <p class="section-subtitle">
+          Comprehensive trading solutions designed to meet diverse business needs across local and international markets.
+        </p>
+      </div>
+      <div class="cards-grid">
+        <div class="card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-truck-moving"></i>
+          </div>
+          <h3>General Trading & Distribution</h3>
+          <p>Buy, sell, and distribute lawful goods across Pakistan through wholesale, retail, and online channels with efficient logistics support.</p>
+        </div>
+        <div class="card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-users-cog"></i>
+          </div>
+          <h3>Trade & Commercial Representation</h3>
+          <p>Represent local and international brands as their trusted partner, expanding market reach and building strategic relationships.</p>
+        </div>
+        <div class="card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-boxes"></i>
+          </div>
+          <h3>Procurement & Supply Solutions</h3>
+          <p>Comprehensive sourcing, procurement, and logistics services supporting manufacturers, importers, and business clients.</p>
+        </div>
+        <div class="card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <h3>E-Commerce & Digital Trade</h3>
+          <p>Develop and manage online stores, marketplaces, and digital trade channels to reach wider audiences effectively.</p>
+        </div>
+        <div class="card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Value-Added Trading Services</h3>
+          <p>Import quality products, refine and rebrand for market appeal, with reliable delivery and complete after-sales support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OPERATIONS ===== -->
   <section id="operations" class="operations">
     <div class="container">
-      <h2><i class="fas fa-globe"></i> BUSINESS OPERATIONS</h2>
-      <div class="operations-container">
-        <div class="operations-column">
-          <h3 style="color: #0A2F5A;">Local Business Operations</h3>
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">Business Operations</h2>
+        <p class="section-subtitle">
+          Strategic operations spanning local and international markets with comprehensive service offerings.
+        </p>
+      </div>
+      <div class="operations-grid">
+        <div class="operations-column animate-on-scroll">
+          <h3>
+            <i class="fas fa-map-marker-alt"></i>
+            Local Business Operations
+          </h3>
           <ul class="operations-list">
             <li><strong>General Trading & Distribution:</strong> Buy, sell, and distribute lawful goods across Pakistan through wholesale, retail, and online channels.</li>
-            <li><strong>Trade & Commercial Representation:</strong> Represent local and international brands as their trusted partner.</li>
-            <li><strong>Procurement & Supply Solutions:</strong> Offer sourcing, procurement, and logistics services.</li>
-            <li><strong>E-Commerce & Digital Trade:</strong> Develop and manage online stores and digital trade channels.</li>
-            <li><strong>Value-Added Trading Services:</strong> Import, refine, and rebrand products with after-sales support.</li>
+            <li><strong>Trade & Commercial Representation:</strong> Represent local and international brands as their trusted partner in the Pakistani market.</li>
+            <li><strong>Procurement & Supply Solutions:</strong> Comprehensive sourcing, procurement, and logistics services for diverse industries.</li>
+            <li><strong>E-Commerce & Digital Trade:</strong> Develop and manage online stores and digital trade channels for maximum market reach.</li>
+            <li><strong>Value-Added Trading Services:</strong> Import, refine, rebrand, and deliver products with complete after-sales support.</li>
           </ul>
         </div>
-        <div class="operations-column">
-          <h3 style="color: #0A2F5A;">International Business Operations</h3>
+        <div class="operations-column animate-on-scroll">
+          <h3>
+            <i class="fas fa-globe"></i>
+            International Business Operations
+          </h3>
           <ul class="operations-list">
-            <li><strong>Global Import & Export:</strong> Trade in commodities, raw materials, machinery, consumer products and food items.</li>
-            <li><strong>International Brand Representation:</strong> Act as a trusted partner for foreign companies in Pakistan.</li>
-            <li><strong>Cross-Border Partnerships:</strong> Facilitate joint ventures with businesses in Europe, Middle East, Australia, Africa and Asia.</li>
-            <li><strong>Digital Trade & E-Commerce Solutions:</strong> Support international e-commerce and cross-border online trade.</li>
+            <li><strong>Global Import & Export:</strong> Trade in commodities, raw materials, machinery, consumer products, and food items worldwide.</li>
+            <li><strong>International Brand Representation:</strong> Act as trusted partner for foreign companies expanding into Pakistani and regional markets.</li>
+            <li><strong>Cross-Border Partnerships:</strong> Facilitate joint ventures with businesses across Europe, Middle East, Australia, Africa, and Asia.</li>
+            <li><strong>Digital Trade & E-Commerce Solutions:</strong> Support international e-commerce and cross-border online trade operations.</li>
           </ul>
         </div>
       </div>
@@ -476,51 +1010,84 @@
   </section>
 
   <!-- ===== INDUSTRIES ===== -->
-  <section id="industries" class="industries" style="background-color: #eef2f7;">
+  <section id="industries" class="industries">
     <div class="container">
-      <h2><i class="fas fa-industry"></i> INDUSTRIES & PRODUCTS WE TRADE</h2>
-      <p>At ORIONTEL EXIM, our broad trading license allows us to operate across multiple industries. We import, export and distribute a wide range of products globally and locally.</p>
-      
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">Industries & Products</h2>
+        <p class="section-subtitle">
+          Our broad trading license enables operations across multiple industries, importing, exporting, and distributing diverse products globally and locally.
+        </p>
+      </div>
       <div class="industries-grid">
-        <div class="industry-card">
-          <h3><i class="fas fa-leaf"></i> Agriculture & Food</h3>
+        <div class="industry-card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <h3>Agriculture & Food</h3>
           <p>Grains, pulses, fruits, vegetables, spices, oils, meat, poultry, seafood, and processed foods.</p>
         </div>
-        <div class="industry-card">
-          <h3><i class="fas fa-hard-hat"></i> Construction & Materials</h3>
-          <p>Cement, steel, tiles, sanitary ware, glass, wood, paints, adhesives, and fittings.</p>
+        <div class="industry-card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-hard-hat"></i>
+          </div>
+          <h3>Construction & Materials</h3>
+          <p>Cement, steel, tiles, sanitary ware, glass, wood, paints, adhesives, and construction fittings.</p>
         </div>
-        <div class="industry-card">
-          <h3><i class="fas fa-tshirt"></i> Textiles & Apparel</h3>
-          <p>Yarns, fabrics, garments, uniforms, home textiles, leather, and footwear.</p>
+        <div class="industry-card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-tshirt"></i>
+          </div>
+          <h3>Textiles & Apparel</h3>
+          <p>Yarns, fabrics, garments, uniforms, home textiles, leather goods, and footwear.</p>
         </div>
-        <div class="industry-card">
-          <h3><i class="fas fa-flask"></i> Chemicals & Packaging</h3>
+        <div class="industry-card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-flask"></i>
+          </div>
+          <h3>Chemicals & Packaging</h3>
           <p>Industrial chemicals, dyes, detergents, fertilizers, pesticides, adhesives, and packaging materials.</p>
         </div>
-        <div class="industry-card">
-          <h3><i class="fas fa-bolt"></i> Electronics & Energy</h3>
-          <p>Consumer electronics, mobiles, appliances, solar panels, UPS, transformers and spare parts.</p>
+        <div class="industry-card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Electronics & Energy</h3>
+          <p>Consumer electronics, mobile devices, appliances, solar panels, UPS systems, transformers, and spare parts.</p>
         </div>
-        <div class="industry-card">
-          <h3><i class="fas fa-oil-well"></i> Petroleum & Industrial Equipment</h3>
-          <p>Lubricants, renewable energy systems, generators, turbines, boilers and high-performance construction machinery.</p>
+        <div class="industry-card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-oil-well"></i>
+          </div>
+          <h3>Petroleum & Industrial Equipment</h3>
+          <p>Lubricants, renewable energy systems, generators, turbines, boilers, and construction machinery.</p>
         </div>
-        <div class="industry-card">
-          <h3><i class="fas fa-heartbeat"></i> Healthcare & Pharmaceuticals</h3>
+        <div class="industry-card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <h3>Healthcare & Pharmaceuticals</h3>
           <p>Medical devices, surgical instruments, nutraceuticals, hospital essentials, and pharmaceutical raw materials.</p>
         </div>
-        <div class="industry-card">
-          <h3><i class="fas fa-car"></i> Automotive & Transport</h3>
+        <div class="industry-card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-car"></i>
+          </div>
+          <h3>Automotive & Transport</h3>
           <p>Automobiles, trucks, motorcycles, tyres, batteries, spare parts, and heavy machinery.</p>
         </div>
-        <div class="industry-card">
-          <h3><i class="fas fa-laptop"></i> IT & Telecom</h3>
-          <p>Hardware, software, networking, telecom equipment, and IT trade solutions.</p>
+        <div class="industry-card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-laptop"></i>
+          </div>
+          <h3>IT & Telecom</h3>
+          <p>Hardware, software, networking equipment, telecom systems, and IT trade solutions.</p>
         </div>
-        <div class="industry-card">
-          <h3><i class="fas fa-home"></i> Consumer Goods</h3>
-          <p>Furniture, household products, kitchenware, cosmetics, toys, stationery, sports goods, and personal care.</p>
+        <div class="industry-card animate-on-scroll">
+          <div class="card-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <h3>Consumer Goods</h3>
+          <p>Furniture, household products, kitchenware, cosmetics, toys, stationery, sports goods, and personal care items.</p>
         </div>
       </div>
     </div>
@@ -529,39 +1096,98 @@
   <!-- ===== LEADERSHIP ===== -->
   <section id="leadership" class="leadership">
     <div class="container">
-      <h2><i class="fas fa-user-tie"></i> MEET OUR FOUNDER</h2>
-      <div class="leader-card">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">Meet Our Founder</h2>
+        <p class="section-subtitle">
+          Visionary leadership driving innovation and excellence in global trade.
+        </p>
+      </div>
+      <div class="leader-card animate-on-scroll">
         <div class="leader-image">
-          <i class="fas fa-user" style="font-size: 3rem;"></i>
+          <i class="fas fa-user-tie"></i>
         </div>
         <div class="leader-info">
           <h3>Asif Rehman</h3>
-          <p class="position">Founder & CEO / Director</p>
-          <p>A visionary entrepreneur and international trade strategist with expertise in regulatory compliance, technology-driven solutions, and client-focused growth. His leadership ensures measurable results and sustainable partnerships worldwide.</p>
+          <p class="leader-position">Founder & CEO / Director</p>
+          <p>A visionary entrepreneur and global trade strategist bringing extensive expertise in regulatory compliance, technology-driven solutions, and business growth strategies. Under his leadership, ORIONTEL EXIM delivers measurable results and fosters sustainable partnerships worldwide, ensuring client success through innovative trading solutions.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== CONTACT ===== -->
-  <section id="contact" class="contact" style="background-color: #eef2f7;">
+  <section id="contact" class="contact">
     <div class="container">
-      <h2><i class="fas fa-phone"></i> CONTACT US</h2>
-      <div class="contact-content">
-        <div class="contact-info">
-          <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Empire Plaza, Machine Mohallah No.3, Jhelum, Punjab, Pakistan</p>
-          <p><i class="fas fa-envelope"></i> <strong>Email:</strong> oriontelexim@gmail.com</p>
-          <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +92 300 2711881 / +92 333 2711881</p>
-          <p><i class="fas fa-globe"></i> <strong>Website:</strong> www.oriontelexim.com</p>
-          <p><i class="fas fa-quote-right"></i> <em>Let's build global opportunities together.</em></p>
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-subtitle">
+          Ready to start your global trading journey? Get in touch with our expert team today.
+        </p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info animate-on-scroll">
+          <h3>Get In Touch</h3>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Address</strong><br>
+              Empire Plaza, Machine Mohallah No.3<br>
+              Jhelum, Punjab, Pakistan
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email</strong><br>
+              oriontelexim@gmail.com
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <strong>Phone</strong><br>
+              +92 300 2711881<br>
+              +92 333 2711881
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-globe"></i>
+            <div>
+              <strong>Website</strong><br>
+              www.oriontelexim.com
+            </div>
+          </div>
+          <div style="margin-top: 2rem; padding: 1.5rem; background: var(--gray-100); border-radius: 12px; text-align: center;">
+            <p style="color: var(--primary-color); font-weight: 600; font-style: italic;">
+              "Let's build global opportunities together."
+            </p>
+          </div>
         </div>
-        <form class="contact-form">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <input type="tel" placeholder="Your Phone">
-          <textarea placeholder="Your Message" rows="5" required></textarea>
-          <button type="submit" class="submit-button">Send Message</button>
-        </form>
+        
+        <div class="contact-form animate-on-scroll">
+          <h3>Send Message</h3>
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-input" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-input" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-input" placeholder="Your Phone">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-input" placeholder="Subject">
+            </div>
+            <div class="form-group">
+              <textarea class="form-textarea" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -569,31 +1195,157 @@
   <!-- ===== FOOTER ===== -->
   <footer>
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-info">
+      <div class="footer-grid">
+        <div class="footer-brand">
           <h3>ORIONTEL EXIM</h3>
           <p>Global Trade Excellence — Local Trust Assurance</p>
           <p>SMC – Private Limited</p>
-          <p>Registered With: Securities and Exchange Commission of Pakistan (SECP)</p>
+          <p>Registered with: Securities and Exchange Commission of Pakistan (SECP)</p>
+          <p>Established: June 2025</p>
         </div>
         <div class="footer-links">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#vision">Vision</a></li>
-            <li><a href="#mission">Mission</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#vision">Vision & Mission</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#operations">Operations</a></li>
             <li><a href="#industries">Industries</a></li>
-            <li><a href="#leadership">Founder</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Business</h4>
+          <ul>
+            <li><a href="#leadership">Leadership</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Trade Portal</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 ORIONTEL EXIM. All rights reserved.</p>
+        <p>&copy; 2025 ORIONTEL EXIM (SMC-Private) Limited. All rights reserved. | Connecting Markets Worldwide</p>
       </div>
     </div>
   </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTop');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Form submission
+    document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(this);
+      const formObject = {};
+      formData.forEach((value, key) => {
+        formObject[key] = value;
+      });
+      
+      // Show success message (you can replace this with actual form submission logic)
+      alert('Thank you for your message! We will get back to you soon.');
+      
+      // Reset form
+      this.reset();
+    });
+
+    // Add loading animation to page
+    window.addEventListener('load', function() {
+      document.body.style.opacity = '1';
+    });
+
+    // Mobile menu toggle (basic implementation)
+    document.querySelector('.mobile-menu').addEventListener('click', function() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Add some interactive effects
+    document.querySelectorAll('.card, .industry-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Enhanced button interactions
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px)';
+      });
+      
+      btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
 </body>
 </html>
