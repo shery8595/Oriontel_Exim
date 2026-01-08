@@ -1,0 +1,100 @@
+/* Global Styles for ORIONTEL EXIM */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FDFFFC;
+  color: #011627;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #011627;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #41EAD4;
+  border-radius: 10px;
+}
+
+/* Glass Navigation */
+.glass-nav {
+  background: rgba(1, 22, 39, 0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(65, 234, 212, 0.15);
+}
+
+/* Hero Gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #011627 0%, #022b4d 100%);
+}
+
+/* Text Balance */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Reveal Animation Container */
+.reveal-container { 
+  overflow: hidden; 
+  display: inline-block; 
+  vertical-align: bottom; 
+  padding-bottom: 0.2em; 
+  margin-bottom: -0.2em;
+}
+
+.reveal-item { 
+  display: inline-block; 
+  transform: translateY(110%); 
+  opacity: 0; 
+}
+
+/* Animation Delays */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.3s; }
+.delay-3 { animation-delay: 0.4s; }
+.delay-4 { animation-delay: 0.5s; }
+.delay-5 { animation-delay: 0.7s; }
+
+/* Loading State */
+.loading-spinner {
+  border: 3px solid rgba(65, 234, 212, 0.1);
+  border-top: 3px solid #41EAD4;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Focus Styles for Accessibility */
+*:focus-visible {
+  outline: 2px solid #41EAD4;
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
