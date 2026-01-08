@@ -69,24 +69,18 @@ const App: React.FC = () => {
 
       {/* Leadership Profile */}
       <Section id="leadership" title="Founder's Insight" dark>
-        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-10 md:gap-16 bg-white/[0.03] p-8 md:p-12 rounded-[30px] md:rounded-[50px] border border-white/5 backdrop-blur-sm relative overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-white/[0.03] p-8 md:p-12 rounded-[30px] md:rounded-[50px] border border-white/5 backdrop-blur-sm relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-red/10 blur-[80px]"></div>
-          <div className="relative group flex-shrink-0 w-full md:w-auto flex justify-center">
-             <div className="absolute inset-0 bg-brand-teal rounded-[40px] rotate-3 md:rotate-6 group-hover:rotate-0 transition-transform duration-500"></div>
-             <div className="relative w-56 h-72 md:w-64 md:h-80 rounded-[40px] overflow-hidden border-4 border-brand-navy shadow-2xl">
-               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" className="w-full h-full object-cover grayscale" alt="Asif Rehman" />
-             </div>
-          </div>
-          <div className="relative z-10 text-center lg:text-left">
+          <div className="relative z-10 text-center">
             <h3 className="text-3xl md:text-4xl font-black mb-1 text-brand-snow tracking-tight">Asif Rehman</h3>
             <p className="text-brand-teal font-bold text-xs md:text-sm mb-6 md:mb-8 tracking-[0.2em] uppercase">Founder & Managing Director</p>
             <div className="relative">
-              <span className="hidden md:block text-6xl text-brand-red absolute -top-8 -left-6 opacity-40">“</span>
-              <p className="text-xl md:text-2xl text-brand-snow/80 leading-relaxed font-light italic text-balance">
+              <span className="hidden md:block text-6xl text-brand-red absolute -top-8 left-1/2 -translate-x-1/2 opacity-40">"</span>
+              <p className="text-xl md:text-2xl text-brand-snow/80 leading-relaxed font-light italic text-balance max-w-3xl mx-auto">
                 Our vision is to become the definitive hub for global trade, bridging the gap between innovation and traditional logistics through unmatched integrity.
               </p>
             </div>
-            <div className="mt-8 md:mt-10 flex flex-wrap justify-center lg:justify-start gap-3">
+            <div className="mt-8 md:mt-10 flex flex-wrap justify-center gap-3">
               <div className="px-4 py-2 bg-white/5 rounded-full text-[8px] md:text-[10px] font-black uppercase tracking-widest">Global Trade Strategist</div>
               <div className="px-4 py-2 bg-white/5 rounded-full text-[8px] md:text-[10px] font-black uppercase tracking-widest">SECP Specialist</div>
             </div>
